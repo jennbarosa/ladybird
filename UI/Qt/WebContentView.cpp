@@ -806,7 +806,7 @@ void WebContentView::enqueue_native_event(Web::MouseEvent::Type type, QSinglePoi
     auto buttons = get_buttons_from_qt_mouse_buttons(event.buttons());
     auto modifiers = get_modifiers_from_qt_keyboard_modifiers(event.modifiers());
 
-    if (button == 0 && (type == Web::MouseEvent::Type::MouseDown || type == Web::MouseEvent::Type::MouseUp)) {
+    if (button == 0 && (type == Web::MouseEvent::Type::MouseDown || type == Web::MouseEvent::Type::MouseUp || type == Web::MouseEvent::Type::DoubleClick || type == Web::MouseEvent::Type::TripleClick)) {
         // We could not convert Qt buttons to something that LibWeb can recognize - don't even bother propagating this
         // to the web engine as it will not handle it anyway, and it will (currently) assert.
         return;
